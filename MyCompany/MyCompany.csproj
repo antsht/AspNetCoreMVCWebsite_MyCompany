@@ -19,17 +19,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Domain\Entities\" />
     <Folder Include="Domain\Enums\" />
     <Folder Include="Domain\Repositories\Abstract\" />
     <Folder Include="Domain\Repositories\EntityFramwork\" />
     <Folder Include="Models\ViewComponents\" />
-    <Folder Include="Views\Shared\" />
     <Folder Include="wwwroot\css\" />
-    <Folder Include="wwwroot\img\" />
-    <Folder Include="wwwroot\js\" />
-    <Folder Include="wwwroot\scss\" />
+	  <Folder Include="wwwroot\webfonts\" />
   </ItemGroup>
 
 </Project>
