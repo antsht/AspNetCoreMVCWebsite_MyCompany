@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MyCompany.Domain;
+using MyCompany.Domain.Repositories.Abstract;
+using MyCompany.Domain.Repositories.EntityFramwork;
 using MyCompany.Infrastructure;
 
 namespace MyCompany;
@@ -23,7 +25,12 @@ public class Program
             ?? throw new FileNotFoundException("Can't load config from appsettings.json"); 
 
         // подключаем контекст базы данных
-        builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(config.Database.ConnectionString));
+        builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(config.Database.ConnectionString)
+            .ConfigureWarnings(warnings => warnings.Ignore(Microsoft.EntityFrameworkCore.Diagnostics.RelationalEventId.PendingModelChangesWarning)));
+
+        builder.Services.AddTransient<IServiceCategoriesRepository, EFServiceCategoriesRepository>();
+        builder.Services.AddTransient<IServicesRepository, EFServicesRepository>();
+        builder.Services.AddTransient<DataManager>();
 
         // настраиваем Identity систему
         builder.Services.AddIdentity<IdentityUser,IdentityRole>(

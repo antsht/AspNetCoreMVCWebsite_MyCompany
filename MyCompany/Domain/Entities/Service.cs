@@ -7,7 +7,7 @@ public class Service : EntityBase
 {
     [Display(Name = "Выберите категорию, к которой относится услуга")]
     public int? ServiceCategoryId { get; set; }
-    ServiceCategory? ServiceCategory { get; set; }
+    public ServiceCategory? ServiceCategory { get; set; }
 
     [Display(Name = "Краткое описание")]
     [MaxLength(3_000)]
